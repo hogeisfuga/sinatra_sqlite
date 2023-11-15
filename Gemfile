@@ -14,6 +14,7 @@ gem 'sqlite3'
 
 group :development, :test do
   # rerun depends on this
+  gem 'debug'
   gem 'rb-fsevent'
   gem 'rerun'
   gem 'rubocop', require: false
