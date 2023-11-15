@@ -4,12 +4,13 @@ require 'securerandom'
 
 # message model
 class Message
-  attr_accessor :id, :name, :content, :created_at
+  attr_accessor :id, :name, :content, :created_at, :attachments
 
-  def initialize
-    @id = SecureRandom.uuid
-    @name = ''
-    @content = ''
-    @created_at = nil
+  def initialize(name:, content:, id: nil, created_at: nil)
+    @id = id || SecureRandom.uuid
+    @name = name || ''
+    @content = content || ''
+    @created_at = created_at || nil
+    @attachments = []
   end
 end

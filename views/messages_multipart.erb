@@ -1,0 +1,26 @@
+<h1>投稿一覧</h1>
+<% messages.each do |msg| %>
+  <div>
+    <div>message_id: <%= msg.id %></div>
+    <div>投稿者: <%= msg.name %>さん</div>
+    <div>内容: <%= msg.content %></div>
+    <div>投稿時間: <%= msg.created_at %></div>
+  </div>
+  <br>
+<% end %>
+
+<h3>新規投稿</h3>
+<form method='post' enctype='multipart/form-data'>
+  <div>
+    <label for='name'>名前</label>
+    <input id='name' name='name'/>
+  </div>
+  <div>
+    <label for='content'>メッセージ</label>
+    <input id='content' name='content'>
+  </div>
+  <div>
+    <input type='file' name='file' accept='.png,jpg,pdf.csv.txt'>
+  </div>
+  <input type='submit'>
+</form>

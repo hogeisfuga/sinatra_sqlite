@@ -15,7 +15,12 @@ db_file="$script_dir/sample_db.sqlite3"
 
 # データベースファイルが存在する場合は削除
 if [ -f "$db_file" ]; then
-  rm "$db_file"
+  rm -f "$db_file"
+  if [ $? -eq 0 ]; then
+    echo "データベースファイルは正常に削除されました。"
+  else
+    echo "エラー: データベースファイルを削除できませんでした。"
+  fi
 fi
 
 # データベースファイルを新規作成
@@ -25,7 +30,6 @@ touch "$db_file"
 for file in $script_names; do
   # SQLファイルの絶対パスを生成
   sql_file="$sql_file_path/$file"
-  
   # sqlite3でSQLファイルを実行
   sqlite3 "$db_file" < "$sql_file"
 done
